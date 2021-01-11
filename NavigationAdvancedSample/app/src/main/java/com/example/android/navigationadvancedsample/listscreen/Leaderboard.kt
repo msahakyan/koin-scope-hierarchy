@@ -33,8 +33,12 @@ import com.example.android.navigationadvancedsample.R
  */
 class Leaderboard : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+//    override val scope: Scope by lazy { newScope() }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
@@ -51,7 +55,6 @@ class Leaderboard : Fragment() {
         }
         return view
     }
-
 }
 
 class MyAdapter(private val myDataset: Array<String>) :
@@ -65,8 +68,10 @@ class MyAdapter(private val myDataset: Array<String>) :
 
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
         // create a new view
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_view_item, parent, false)
@@ -82,14 +87,15 @@ class MyAdapter(private val myDataset: Array<String>) :
         holder.item.findViewById<TextView>(R.id.user_name_text).text = myDataset[position]
 
         holder.item.findViewById<ImageView>(R.id.user_avatar_image)
-                .setImageResource(listOfAvatars[position % listOfAvatars.size])
+            .setImageResource(listOfAvatars[position % listOfAvatars.size])
 
         holder.item.setOnClickListener {
             val bundle = bundleOf(USERNAME_KEY to myDataset[position])
 
             holder.item.findNavController().navigate(
-                    R.id.action_leaderboard_to_userProfile,
-                bundle)
+                R.id.action_leaderboard_to_userProfile,
+                bundle
+            )
         }
     }
 

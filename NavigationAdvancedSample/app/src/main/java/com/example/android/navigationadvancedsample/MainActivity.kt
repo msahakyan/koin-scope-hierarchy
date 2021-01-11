@@ -17,7 +17,6 @@
 package com.example.android.navigationadvancedsample
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -27,7 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 /**
  * An activity that inflates a layout that has a [BottomNavigationView].
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : ScopeAwareActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         } // Else, need to wait for onRestoreInstanceState
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         // Now that BottomNavigationBar has restored its instance state
         // and its selectedItemId, we can proceed with setting up the

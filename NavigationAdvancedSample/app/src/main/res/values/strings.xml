@@ -46,4 +46,7 @@
     <string name="cd_home">Home</string>
     <string name="cd_list">List</string>
     <string name="cd_form">Form</string>
+    
+    <string name="placeholder_en_locale">En translation for %1$s</string>
+    <string name="placeholder_de_locale">De translation for %1$s</string>
 </resources>
